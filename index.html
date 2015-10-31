@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>lucky slayer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="styles.css">
+      <link href='https://fonts.googleapis.com/css?family=VT323|Roboto+Mono:400,700,700italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  <header>
+
+  </header>
+  <section class="container">
+        <div class="top">
+              <div class="col-md-2 border topLeft">
+                  <span class="weapSec">Weapons</span>
+                  <ul class="items">
+                    <a href="#" class="eachWep">
+                    <li class="weapon border">
+                      <img src="images/bigstick.png" class= "center-block img-responsive" alt="">
+                    </li>
+                    </a>
+                    <a href="#" class="eachWep">
+                    <li class="weapon border">
+                      <img src="images/fist.png" class= "center-block img-responsive" alt="">
+                    </li>
+                    </a>
+                    <a href="#" class="eachWep">
+                    <li class="weapon border">
+                      <img src="images/GiantGlowingSword.png" class= "center-block img-responsive" alt="">
+                    </li>
+                    </a>
+                    <a href="#" class="eachWep">
+                    <li class="weapon border">
+                      <img src="images/magicSword.png" class= "center-block img-responsive" alt="">
+                    </li>
+                    </a>
+                    <a href="#" class="eachWep">
+                    <li class="weapon border">
+                      <img src="images/knife.png" class= "center-block img-responsive" alt="">
+                    </li>
+                    </a>
+
+                  </ul>
+              </div>
+              <div class="col-md-10 border topRight">
+                <div class="col-md-12" id="upperRight">
+
+                </div>
+                <div class="col-md-12" id="lowerRight">
+                  <div class="btn-group navBut" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" id="camp">CAMP</button>
+                    <button type="button" class="btn btn-default" id="field">FIELD</button>
+                    <button type="button" class="btn btn-default" id="forest">FOREST</button>
+                    <button type="button" class="btn btn-default" id="mountain">MOUNTAIN</button>
+                  </div>
+
+                </div>
+              </div>
+        </div>
+        <div class="bottom">
+              <div class="col-md-4 border bottomLeft">
+
+                      <div class="col-md-6 stats">Name:</div>
+                      <div class="col-md-6 stats">Jim</div>
+                      <div class="col-md-6 stats">Health:</div>
+                      <div class="col-md-6 stats">100</div>
+                      <div class="col-md-6 stats">Damage:</div>
+                      <div class="col-md-6 stats">10</div>
+                      <div class="col-md-6 stats">Gold:</div>
+                      <div class="col-md-6 stats">50g</div>
+                      <div class="col-md-6 stats">Experience:</div>
+                      <div class="col-md-6 stats">80</div>
+
+              </div>
+              <div class="col-md-8 borderdbl bottomRight">
+                  <span class="contentText">
+                      "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
+                      this.level + " health: " + this.health +
+                      " experience left to next level: " + (this.expNeeded -
+                        this.experience) + " Gold earned: "
+                   </span>
+              </div>
+        </div>
+  </section>
+
+
+
+
+    <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="vars.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>

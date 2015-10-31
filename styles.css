@@ -1,0 +1,83 @@
+/************************************
+GENERAL BOXES AND BODY
+************************************/
+body {
+  background-color: maroon;
+  font-family: 'VT323', 'Roboto Mono', 'sans-serif'; }
+
+header {
+  height: 50px; }
+
+.border {
+  border: 5px outset gold; }
+
+.borderdbl {
+  border-style: outset;
+  border-width: 5px;
+  border-color: gold; }
+
+.top {
+  background-color: white;
+  height: 500px; }
+  .top div {
+    height: 500px; }
+
+.bottom {
+  background-color: white;
+  height: 200px; }
+  .bottom div {
+    height: 200px; }
+
+/************************************
+TOP LEFT
+************************************/
+.topLeft {
+  background-color: teal; }
+
+.weapSec {
+  display: block;
+  text-align: center;
+  font-size: 2em; }
+
+.items {
+  margin: 15px;
+  list-style: none;
+  padding: 0; }
+  .items .weapon {
+    height: 75px;
+    width: 75px;
+    overflow: hidden;
+    margin: 10px auto;
+    background-color: steelblue; }
+
+/************************************
+TOP RIGHT
+************************************/
+.topRight {
+  background-image: url(images/mtn.jpg);
+  background-size: cover; }
+
+#upperRight {
+  height: 92%;
+  border: 1px black solid; }
+
+#lowerRight {
+  height: 7%; }
+  #lowerRight .navBut {
+    width: 100%;
+    height: 100%; }
+    #lowerRight .navBut button {
+      width: 25%; }
+
+/************************************
+BOTTOM LEFT
+************************************/
+div.stats {
+  height: 20%;
+  font-size: 1.5em; }
+
+/************************************
+BOTTOM RIGHT
+************************************/
+.contentText {
+  font-size: 2em; }
