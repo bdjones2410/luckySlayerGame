@@ -317,12 +317,7 @@ var jim = new Player({
 });
 var dragon = new Enemy("Smaug", 40, 10, 20);
 
-// function Weapon(option) {
-//     this.name = option.name;
-//     this.damage = option.damage;
-//     this.image = option.image;
-//
-// }
+
 
 var curEnemy = '';
 
@@ -514,5 +509,7 @@ function newEnemy(zone) {
 }
 
 newEnemy(zone);
+
+// v--- Where I put the made weapons into an array.
 
 var weaponArr = [magicSword, legendarySword, coolKnife, pokeyStick];
