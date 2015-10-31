@@ -18,8 +18,13 @@
         <div class="top">
               <div class="col-md-2 border topLeft">
                   <span class="weapSec">Weapons</span>
-                  <ul class="items">
-                    <a href="#" class="eachWep">
+                  <ul class="items" id="weaponList">
+
+                  <!--- ^ HERE IS WHERE I WANT TO APPEND EACH WEAPON --->
+
+
+
+                    <!-- <a href="#" class="eachWep">
                     <li class="weapon border">
                       <img src="images/bigstick.png" class= "center-block img-responsive" alt="">
                     </li>
@@ -43,7 +48,7 @@
                     <li class="weapon border">
                       <img src="images/knife.png" class= "center-block img-responsive" alt="">
                     </li>
-                    </a>
+                    </a> -->
 
                   </ul>
               </div>
@@ -65,16 +70,6 @@
         <div class="bottom">
               <div class="col-md-4 border bottomLeft">
 
-                      <div class="col-md-6 stats">Name:</div>
-                      <div class="col-md-6 stats">Jim</div>
-                      <div class="col-md-6 stats">Health:</div>
-                      <div class="col-md-6 stats">100</div>
-                      <div class="col-md-6 stats">Damage:</div>
-                      <div class="col-md-6 stats">10</div>
-                      <div class="col-md-6 stats">Gold:</div>
-                      <div class="col-md-6 stats">50g</div>
-                      <div class="col-md-6 stats">Experience:</div>
-                      <div class="col-md-6 stats">80</div>
 
               </div>
               <div class="col-md-8 borderdbl bottomRight">
@@ -90,11 +85,15 @@
 
 
 
-
+    <!-- Libs -->
     <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script> -->
+
+    <!-- Scripts -->
+    <script src="templates.js" charset="utf-8"></script>
     <script src="vars.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
+    <script src="functions.js" charset="utf-8"></script>
   </body>
 </html>
