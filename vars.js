@@ -305,6 +305,7 @@ function Enemy(option) {
 }
 
 function Weapon(option) {
+  option = option || {};
     this.name = option.name;
     this.damage = option.damage;
     this.pic = option.pic;
@@ -512,4 +513,4 @@ newEnemy(zone);
 
 // v--- Where I put the made weapons into an array.
 
-var weaponArr = [magicSword, legendarySword, coolKnife, pokeyStick];
+var weaponArr = [magicSword, coolKnife, pokeyStick];

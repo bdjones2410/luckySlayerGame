@@ -12,10 +12,8 @@ var game = {
 
   styling: function(){
     game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
-    game.loadWeapon($('#weaponList'), weaponArr, 'weaponSlot');
-
+    game.weaponLoad($('#weaponList'), weaponArr, 'weaponSlot');
     //^-----------TRYING TO LOAD FULL TEMPLATE FROM weaponArr
-
 
   },
 
@@ -37,25 +35,16 @@ var game = {
     $el.append(gameHtml);
   },
 
-  loadProfile: function(sect, arr, tmpl) {
-    _.each(arr, function(curEl, idx, arri) {
-      game.loadTemplate($sect, curel, tmpl)
-    });
-  },
-
   weaponLoad: function($el, data, tmpl){
-    var template= game.getTemplate(tmpl);
-    var gameHtml = template(data);
+    var gameHtml = "";
+    var template = game.getTemplate(tmpl);
+    _.each(data, function(curEl){
+      gameHtml += template(curEl);
+    })
     $el.append(gameHtml);
   },
 
-  loadWeapon: function($sect, arr, tmpl){
-    _.each(arr, function(curEl){
-      _.each(curEl, function(curIt, idx, arri){
-        game.loadTemplate($sect, curIt, tmpl)
-      });
-    });
-  },
+
 
 
 
