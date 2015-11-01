@@ -1,3 +1,6 @@
+$goldBorder: 5px outset darkgoldenrod;
+
+
 /************************************
 GENERAL BOXES AND BODY
 ************************************/
@@ -65,15 +68,23 @@ TOP RIGHT
 ************************************/
 
 .topRight {
-background-image: url(images/mtn.jpg);
+background-image: url(images/camp.png-original);
 background-size:cover;
 height:500px;
 }
 
 #upperRight{
   height:92%;
-  border:1px black solid;
+
 }
+.dragonBackground {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-image:url(http://i60.photobucket.com/albums/h10/lothaer/Cataclysm/deathwing.gif);
+}
+
+
 #lowerRight {
   height:7%;
   .navBut{
@@ -87,9 +98,10 @@ height:500px;
 
 .enemyWindow{
   float:right;
-  border:2px solid black;
+  border:$goldBorder;
   background-color:white;
   margin-top:5%;
+  padding-right:0;
 }
 
 .enemySats{
@@ -102,8 +114,15 @@ height:500px;
 }
 
 .enemyPic {
-  border-left:2px solid black;
+  border-left:$goldBorder;
   padding: 10%;
+}
+
+.enNameBox{
+  text-align: center;
+  border-top: $goldBorder;
+  border-left:$goldBorder;
+  float:right;
 }
 /************************************
 BOTTOM LEFT

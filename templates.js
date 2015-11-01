@@ -13,19 +13,33 @@ var templates ={
     ].join(""),
 
     weaponSlot:[
-      '<a href="#" class="eachWep">',
       '<li class="weapon border">',
+      '<a href="#" class="eachWep">',
       '<img src=" <%= pic %> " class= "center-block img-responsive" alt="">',
-      '</li>',
       '</a>',
+      '</li>',
     ].join(""),
 
     consoleText: [
       '<span class="contentText">',
-      'You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: ',
-      '<%= level %> health:  <%= health %>',
-      ' experience left to next level: <%= expNeeded %>',
+      'Welcome <%=name%> to a land of luck and battle!  Can you get strong enough ',
+      'on the corpses of enemies, to battle the Destroyer before he gets too irriated and comes for you?',
       '</span>',
+    ].join(""),
+
+    enemyDisplay: [
+      '<div class="col-md-4 enemySats center-block">',
+      '<div class="col-md-6 enstats">Health:</div>',
+      '<div class="col-md-6 enstats"><%=health%></div>',
+      '<div class="col-md-6 enstats">Attack:</div>',
+      '<div class="col-md-6 enstats"><%=attack%></div>',
+      '</div>',
+      '<div class="col-md-8 enemyPic">',
+      '<img src="<%=pic%>" class= "center-block img-responsive" alt="">',
+      '</div>',
+      '<div class="col-md-8 enNameBox">',
+      '<h4><span class="enName"><%=name%></span></h4>',
+      '</div>',
     ].join(""),
 
 };

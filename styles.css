@@ -53,13 +53,18 @@ TOP LEFT
 TOP RIGHT
 ************************************/
 .topRight {
-  background-image: url(images/mtn.jpg);
+  background-image: url(images/camp.png-original);
   background-size: cover;
   height: 500px; }
 
 #upperRight {
-  height: 92%;
-  border: 1px black solid; }
+  height: 92%; }
+
+.dragonBackground {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-image: url(http://i60.photobucket.com/albums/h10/lothaer/Cataclysm/deathwing.gif); }
 
 #lowerRight {
   height: 7%; }
@@ -71,9 +76,10 @@ TOP RIGHT
 
 .enemyWindow {
   float: right;
-  border: 2px solid black;
+  border: 5px outset darkgoldenrod;
   background-color: white;
-  margin-top: 5%; }
+  margin-top: 5%;
+  padding-right: 0; }
 
 .enemySats {
   padding: 10% 2%; }
@@ -82,8 +88,14 @@ TOP RIGHT
     padding: 0; }
 
 .enemyPic {
-  border-left: 2px solid black;
+  border-left: 5px outset darkgoldenrod;
   padding: 10%; }
+
+.enNameBox {
+  text-align: center;
+  border-top: 5px outset darkgoldenrod;
+  border-left: 5px outset darkgoldenrod;
+  float: right; }
 
 /************************************
 BOTTOM LEFT

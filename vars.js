@@ -1,16 +1,24 @@
+var fist = new Weapon({name:"fist", damage:1, pic:"images/fist.png"});
+var playerName = "Brandon";
 
-var playerName = prompt("What is your name adventurer?");
+ // prompt("What is your name adventurer?");
 
-  var player = new Player({name: playerName});
+var player = new Player({name: playerName});
+
+var log = "";
 
 
+//  var newText = function($el, log){
+//   $el.html(log);
+// }
 
 var gambleCost = 15;
 
-// var pokeyStick = 1;
-// var coolKnife = 1;
-// var magicSword = 1;
-// var legendarySword = 1;
+var pokeyStick = 1;
+var coolKnife = 1;
+var magicSword = 1;
+var legendarySword = 1;
+var fist = new Weapon({name:"fist", damage:1, pic:"images/fist.png"});
 
 
 function Player(option) {
@@ -30,34 +38,38 @@ function Player(option) {
                 if (magicSword != 1) {
                     magicSword.damage += 10;
                     if (magicSword.damage > this.weapon.damage) {
-                        console.log("Woo! your " + magicSword.name +
+                        log = "Woo! your " + magicSword.name +
                             " has gained more power! and is currently stronger than your " +
-                            this.weapon.name + " so you equip it! "
-                        );
-                        this.equip(magicSword);
+                            this.weapon.name + " so you equip it! ";
+
+                            this.equip(magicSword);
                     } else {
-                        console.log(
+                        log =
                             "you're very nearly pretty lucky!  your " +
                             magicSword.name +
-                            " gains a bit more power!");
+                            " gains a bit more power!";
+
                     }
                 } else {
-                    magicSword = new Weapon({
-                        name: "almost Legendary Sword",
-                        damage: 30,
-                        // image: magicsword.png
-                    });
+                  magicSword = new Weapon({
+                     name: "almost Legendary Sword",
+                     damage: 30,
+                     pic: "images/magicsword.png",
+                  });
+
                     weaponArr.push(magicSword);
                     if (this.weapon.damage >= magicSword.damage) {
-                        console.log("You got an " + magicSword.name +
+                        log = "You got an " + magicSword.name +
                             " but your current weapon does more damage!  so an " +
                             magicSword.name +
-                            " is put in your storage.");
+                            " is put in your storage.";
+
                     } else {
-                        console.log("Almost SUPER lucky, you got an " +
+                        log = "Almost SUPER lucky, you got an " +
                             magicSword.name +
-                            " which does more damage! so you equip it"
-                        );
+                            " which does more damage! so you equip it";
+
+
                         this.equip(magicSword);
                     }
                 }
@@ -65,85 +77,86 @@ function Player(option) {
                 if (legendarySword != 1) {
                     legendarySword.damage *= 2;
                     legendarySword.name = "SUPER legendary Sword";
-                    console.log("UBER LUCKY!!! your " + legendarySword.name +
-                        " gains even more power!");
+                    log = "UBER LUCKY!!! your " + legendarySword.name +
+                        " gains even more power!";
+
                 } else {
-                    legendarySword = new Weapon({
-                        name: "Legendary Sword",
-                        damage: 100,
-                        // image: GiantGlowingSword.png,
-                    });
+                  legendarySword = new Weapon({
+                     name: "Legendary Sword",
+                     damage: 100,
+                     pic: "images/GiantGlowingSword.png",
+                  });
                     this.equip(legendarySword);
                     weaponArr.push(legendarySword);
-                    console.log("Super Lucky!  YOU GOT " +
+                    log = "Super Lucky!  YOU GOT " +
                         legendarySword.name +
-                        " if you continue to gamble, maybe you can even turn it into a SUPER legendary?"
-                    );
+                        " if you continue to gamble, maybe you can even turn it into a SUPER legendary?";
+
                 }
             } else if (roll > 65 && roll < 85) {
                 if (coolKnife != 1) {
-                    console.log("you already have a " + coolKnife.name +
-                        " so this didn't pay off... ");
+                    log = "you already have a " + coolKnife.name +
+                        " so this didn't pay off... ";
+
                 } else {
-                    coolKnife = new Weapon({
-                        name: "nifty Knife",
-                        damage: 15,
-                        // image: knife.png,
-                    });
+                  coolKnife = new Weapon({
+                     name: "nifty Knife",
+                     damage: 15,
+                     pic: "images/knife.png",
+                  });
                     weaponArr.push(coolKnife);
                     if (this.weapon.damage >= coolKnife.damage) {
-                        console.log("You got a " + coolKnife.name +
+                        log="You got a " + coolKnife.name +
                             " but your current weapon does more damage!  so a " +
                             coolKnife.name +
-                            " is put in your storage.");
+                            " is put in your storage.";
+
 
                     } else {
                         this.equip(coolKnife);
-                        console.log("that is a pretty " + coolKnife.name +
-                            " and does more damage, let's equip it!"
-                        );
+                        log="that is a pretty " + coolKnife.name +
+                            " and does more damage, let's equip it!";
+
                     }
                 }
             } else if (roll > 30 && roll < 66) {
                 if (pokeyStick != 1) {
-                    console.log("How many " + pokeyStick.name +
-                        "'s does one person need? Threw it out");
+                    log="How many " + pokeyStick.name +
+                        "'s does one person need? Threw it out";
+
                 } else {
-                    pokeyStick = new Weapon({
-                        name: "Poking Stick",
-                        damage: 5,
-                        // image: bigstick.png,
-                    });
+                  pokeyStick = new Weapon({
+                     name: "Poking Stick",
+                     damage: 5,
+                     pic: "images/bigstick.png",
+                  });
                     weaponArr.push(pokeyStick);
                     if (this.weapon.damage >= pokeyStick) {
-                        console.log("You may have found a new " +
+                        log = "You may have found a new " +
                             pokeyStick.name +
-                            " but your current weapon is better, so it goes in storage!"
-                        );
+                            " but your current weapon is better, so it goes in storage!";
+
                     } else {
                         this.equip(pokeyStick);
-                        console.log("You find a nice " + pokeyStick.name +
-                            " which is better than your fists! so let's use it!"
-                        );
+                        log = "You find a nice " + pokeyStick.name +
+                            " which is better than your fists! so let's use it!";
+
                     }
                 }
             } else {
-                console.log(
-                    "your gamble doesn't pay off! no new shinies for you"
-                );
+                log =
+                    "your gamble doesn't pay off! no new shinies for you";
+
             }
 
         } else {
-            console.log(
-                "not enough gold to gamble! slay more and return!");
-        }
+            log = "not enough gold to gamble! slay more and return!";
 
+        }
+          game.weaponLoad($('#weaponList'), weaponArr, 'weaponSlot');
+          game.newText($('.contentText'), log);
     };
-    this.weapon = new Weapon({
-        name: "fist",
-        damage: 1,
-        image: "images/fist.png",
-    });
+    this.weapon = fist;
     this.equip = function(weapon) {
         this.weapon = weapon;
     };
@@ -162,7 +175,7 @@ function Player(option) {
         }
     };
     this.attack = function(enemy) {
-        console.log("you are fighting " + enemy.name + "!");
+
         var playerHit = Math.floor(Math.random() * 100);
         var enemyHit = Math.floor(Math.random() * 10);
 
@@ -172,49 +185,56 @@ function Player(option) {
                 if (enemyHit > 2) {
                     this.health = this.health - enemy.attack;
                     if (this.health > 0) {
-                        console.log("You exchange blows with the " +
+                        log= "You exchange blows with the " +
                             enemy.name +
                             " and both return alive!  Your health: " +
                             this
                             .health + ", " + enemy.name +
                             " Health: " +
-                            enemy.health);
+                            enemy.health;
+
                     } else {
-                        console.log("You took some flesh from the " +
+                        log = "You took some flesh from the " +
                             enemy.name +
-                            ", but he took your life! Game Over");
+                            ", but he took your life! Game Over";
+                            $('.topRight').html("<h1>Game Over</h1>");
+
                     }
                 } else {
-                    console.log("You strike the " + enemy.name +
+                    log = "You strike the " + enemy.name +
                         "! and manage to dodge his counter attack taking no damage! Your health: " +
                         this.health + ", " + enemy.name +
                         " Health: " +
-                        enemy.health);
+                        enemy.health;
+
                 }
             } else {
                 this.experience = this.experience + enemy.expWorth;
                 this.gold = this.gold + enemy.goldWorth;
                 if (this.experience > this.expNeeded) {
                     this.onLvl();
-                    console.log(
-                        "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
+                    log =  "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
                         this.level + " health: " + this.health +
                         " experience left to next level: " + (this.expNeeded -
                             this.experience) + " Gold earned: " +
-                        enemy.goldWorth);
-                    newEnemy(zone);
-                    console.log(
+                        enemy.goldWorth;
+
+                    game.loadNewen();
+
+                    log =
                         "But a new enemy has appearedy! you now are fighting a " +
-                        curEnemy.name);
+                        curEnemy.name;
+
                 } else {
-                    console.log("You have destroyed the " + enemy.name +
+                    log = "You have destroyed the " + enemy.name +
                         "! congrats! your remaining health is: " +
-                        this.health + " Gold earned: " + enemy.goldWorth
-                    );
-                    newEnemy(zone);
-                    console.log(
+                        this.health + " Gold earned: " + enemy.goldWorth;
+
+                    game.loadNewen();
+                    log =
                         "But a new enemy has appearedy! you now are fighting a " +
-                        curEnemy.name);
+                        curEnemy.name;
+
                 }
             }
 
@@ -226,43 +246,49 @@ function Player(option) {
                 if (enemyHit > 2) {
                     this.health = this.health - enemy.attack;
                     if (this.health > 0) {
-                        console.log("You exchange blows with the " +
+                        log ="You exchange blows with the " +
                             enemy.name +
                             " and deal critical damage! both of you return alive!  Your health: " +
                             this.health + ", " + enemy.name +
                             " Health: " +
-                            enemy.health);
+                            enemy.health;
+
                     } else {
-                        console.log("You took some flesh from the " +
+                        log = "You took some flesh from the " +
                             enemy
                             .name +
-                            ", but he took your life! Game Over");
+                            ", but he took your life! Game Over";
+                            $('.topRight').html("<h1>Game Over</h1>");
+
                     }
                 } else {
-                    console.log("You strike the " + enemy.name +
+                    log = "You strike the " + enemy.name +
                         "! dealing critical damage and manage to dodge his counter attack taking no damage! Your health: " +
                         this.health + ", " + enemy.name +
                         " Health: " +
-                        enemy.health);
+                        enemy.health;
+
                 }
             } else {
                 this.experience = this.experience + enemy.expWorth;
                 this.gold = this.gold + enemy.goldWorth;
                 if (this.experience >= this.expNeeded) {
                     this.onLvl();
-                    console.log(
+                    log =
                         "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
                         this.level + " health: " + this.health +
                         " experience left to next level: " + (this.expNeeded -
                             this.experience) + " Gold earned: " +
-                        enemy.goldWorth);
+                        enemy.goldWorth;
+
                 } else {
-                    console.log("You have destroyed the " + enemy.name +
+                    log = "You have destroyed the " + enemy.name +
                         "! and gained: " + enemy.expWorth +
                         " experience points! congrats! your remaining health is: " +
                         this.health + " Gold earned: " + enemy.goldWorth
-                    );
-                    newEnemy(zone);
+                    ;
+
+                    game.loadNewen();
                     console.log(
                         "But a new enemy has appearedy! you now are fighting a " +
                         curEnemy.name);
@@ -272,25 +298,33 @@ function Player(option) {
             if (enemyHit > 2) {
                 this.health = this.health - enemy.attack;
                 if (this.health > 0) {
-                    console.log("You miss your strike! and the Enemy " +
+                    log = "You miss your strike! and the Enemy " +
                         enemy.name +
                         " strikes you for " + enemy.attack +
                         " damage!  your remaining health: " + this.health
-                    );
+                    ;
+
 
                 } else {
-                    console.log("You gave it all, but not enough. The " +
+                    log = "You gave it all, but not enough. The " +
                         enemy
                         .name +
                         " gets by unharmed in your assault, but leaves behind your corpse.  Game Over"
-                    );
+                    ;
+                    $('.topRight').html("<h1>Game Over</h1>");
+
                 }
             } else {
-                console.log(
+                log =
                     "You both stare menacingly at eachother, but your barks are worse than your bite!  you both miss your assaults"
-                );
+                ;
+
             }
         }
+        game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
+        game.loadTemplate($('.enemyWindow'), curEnemy, 'enemyDisplay');
+        game.newText($('.contentText'), log);
+
     };
 }
 
@@ -302,6 +336,7 @@ function Enemy(option) {
     this.attack = option.attack;
     this.expWorth = option.expWorth;
     this.goldWorth = option.goldWorth;
+    this.pic = option.pic;
 }
 
 function Weapon(option) {
@@ -312,7 +347,7 @@ function Weapon(option) {
 }
 
 
-var fist = new Weapon("Fist", 1);
+
 var jim = new Player({
     name: "jim"
 });
@@ -328,28 +363,32 @@ var bug = new Enemy({
     health: 50,
     attack: 10,
     expWorth: 20,
-    goldWorth: 5
+    goldWorth: 5,
+    pic: "images/evilbug-vi.gif",
 });
 var bat = new Enemy({
     name: "Bat",
     health: 50,
     attack: 10,
     expWorth: 20,
-    goldWorth: 5
+    goldWorth: 5,
+    pic: "images/evilbat.gif",
 });
 var snake = new Enemy({
     name: "Snake",
     health: 50,
     attack: 10,
     expWorth: 20,
-    goldWorth: 5
+    goldWorth: 5,
+    pic: "images/snake.gif",
 });
 var critter = new Enemy({
     name: "Critter",
     health: 50,
     attack: 10,
     expWorth: 20,
-    goldWorth: 5
+    goldWorth: 5,
+    pic: "images/critter.gif",
 });
 
 
@@ -360,28 +399,32 @@ var sprite = new Enemy({
     health: 50,
     attack: 50,
     expWorth: 30,
-    goldWorth: 10
+    goldWorth: 10,
+    pic: "images/sprite.gif",
 });
 var darkWolf = new Enemy({
     name: "Dark Wolf",
     health: 50,
     attack: 50,
     expWorth: 30,
-    goldWorth: 10
+    goldWorth: 10,
+    pic: "images/darkWolf.png",
 });
 var goblin = new Enemy({
     name: "Goblin",
     health: 50,
     attack: 50,
     expWorth: 30,
-    goldWorth: 10
+    goldWorth: 10,
+    pic: "images/goblin.png",
 });
 var satire = new Enemy({
     name: "Satire",
     health: 50,
     attack: 50,
     expWorth: 30,
-    goldWorth: 10
+    goldWorth: 10,
+    pic: "images/satire.jpg",
 });
 
 //mountain monsters//
@@ -390,44 +433,58 @@ var ogre = new Enemy({
     health: 500,
     attack: 150,
     expWorth: 200,
-    goldWorth: 20
+    goldWorth: 20,
+    pic: "images/ogre.gif",
 });
 var minotaur = new Enemy({
     name: "Minotaur",
     health: 500,
     attack: 150,
     expWorth: 200,
-    goldWorth: 20
+    goldWorth: 20,
+    pic: "images/minotaur.gif",
 });
 var troll = new Enemy({
     name: "Troll",
     health: 500,
     attack: 150,
     expWorth: 200,
-    goldWorth: 20
+    goldWorth: 20,
+    pic: "images/troll.gif",
 });
 var harpy = new Enemy({
     name: "Harpy",
     health: 500,
     attack: 150,
     expWorth: 200,
-    goldWorth: 20
+    goldWorth: 20,
+    pic: "images/Harpy.gif",
 });
 
 //rares//
+var totoro = new Enemy({
+    name: "Totoro",
+    health:1,
+    attack:0,
+    expWorth:0,
+    goldWorth: 500,
+    pic:"images/totoro.gif",
+});
 var fairyorb = new Enemy({
-    name: "fairy orb",
+    name: "fairy",
     health: 5,
     attck: 1,
     expWorth: 500,
-    goldWorth: 100
+    goldWorth: 100,
+    pic: "images/fairyorb.png",
 });
 var phoenix = new Enemy({
     name: "Phoenix",
     health: 100,
     attck: 50,
     expWorth: 800,
-    goldWorth: 200
+    goldWorth: 200,
+    pic: "images/phoenix.gif",
 });
 //bosses//
 var dragon = new Enemy({
@@ -435,7 +492,8 @@ var dragon = new Enemy({
     health: 9001,
     attack: 500,
     expWorth: 5000,
-    goldWorth: 1000
+    goldWorth: 1000,
+    pic: "images/deathwing.gif",
 });
 
 var fieldArr = [
@@ -455,32 +513,9 @@ var bossArr = [
     dragon,
 ];
 
-var magicSword = new Weapon({
-   name: "almost Legendary Sword",
-   damage: 30,
-   pic: "images/magicsword.png",
-});
-
-var legendarySword = new Weapon({
-   name: "Legendary Sword",
-   damage: 100,
-   pic: "images/GiantGlowingSword.png",
-});
-
-var coolKnife = new Weapon({
-   name: "nifty Knife",
-   damage: 15,
-   pic: "images/knife.png",
-});
-
-var pokeyStick = new Weapon({
-   name: "Poking Stick",
-   damage: 5,
-   pic: "images/bigstick.png",
-});
 
 var curEnemy = '';
-var zone = forestArr;
+var zone = fieldArr;
 var bossRage = 0;
 
 function newEnemy(zone) {
@@ -507,10 +542,11 @@ function newEnemy(zone) {
         var idx = Math.floor(Math.random() * zone.length);
         curEnemy = zone[idx];
     }
+    // game.loadTemplate($('.enemyWindow'), curEnemy, 'enemyDisplay');
 }
 
 newEnemy(zone);
 
 // v--- Where I put the made weapons into an array.
 
-var weaponArr = [magicSword, coolKnife, pokeyStick];
+var weaponArr = [fist];
