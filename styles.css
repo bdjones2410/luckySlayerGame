@@ -19,8 +19,6 @@ header {
 .top {
   background-color: white;
   height: 500px; }
-  .top div {
-    height: 500px; }
 
 .bottom {
   background-color: white;
@@ -32,7 +30,8 @@ header {
 TOP LEFT
 ************************************/
 .topLeft {
-  background-color: teal; }
+  background-color: teal;
+  height: 500px; }
 
 .weapSec {
   display: block;
@@ -55,7 +54,8 @@ TOP RIGHT
 ************************************/
 .topRight {
   background-image: url(images/mtn.jpg);
-  background-size: cover; }
+  background-size: cover;
+  height: 500px; }
 
 #upperRight {
   height: 92%;
@@ -68,6 +68,22 @@ TOP RIGHT
     height: 100%; }
     #lowerRight .navBut button {
       width: 25%; }
+
+.enemyWindow {
+  float: right;
+  border: 2px solid black;
+  background-color: white;
+  margin-top: 5%; }
+
+.enemySats {
+  padding: 10% 2%; }
+  .enemySats .enstats {
+    margin: 0;
+    padding: 0; }
+
+.enemyPic {
+  border-left: 2px solid black;
+  padding: 10%; }
 
 /************************************
 BOTTOM LEFT
