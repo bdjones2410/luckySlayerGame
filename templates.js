@@ -19,6 +19,13 @@ var templates ={
       '</li>',
       '</a>',
     ].join(""),
- // ^------------------ TEMPLATE FOR EACH ITEM.
+
+    consoleText: [
+      '<span class="contentText">',
+      'You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: ',
+      '<%= level %> health:  <%= health %>',
+      ' experience left to next level: <%= expNeeded %>',
+      '</span>',
+    ].join(""),
 
 };

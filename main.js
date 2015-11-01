@@ -13,6 +13,7 @@ var game = {
   styling: function(){
     game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
     game.weaponLoad($('#weaponList'), weaponArr, 'weaponSlot');
+    game.loadTemplate($('.bottomRight'), player, 'consoleText');
     //^-----------TRYING TO LOAD FULL TEMPLATE FROM weaponArr
 
   },
@@ -30,9 +31,10 @@ var game = {
   },
 
   loadTemplate: function($el, data, tmpl) {
+    var gameHtml = "";
     var template = game.getTemplate(tmpl);
-    var gameHtml = template(data);
-    $el.append(gameHtml);
+    gameHtml += template(data);
+    $el.html(gameHtml);
   },
 
   weaponLoad: function($el, data, tmpl){
