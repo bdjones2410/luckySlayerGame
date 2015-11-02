@@ -77,6 +77,8 @@ var game = {
               break;
             case 'Legendary Sword': player.equip(legendarySword);
               break;
+            case 'SUPER legendary Sword': player.equip(legendarySword);
+              break;
             case 'nifty Knife': player.equip(coolKnife);
               break;
             case 'Poking Stick': player.equip(pokeyStick);
