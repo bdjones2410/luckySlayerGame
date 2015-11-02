@@ -181,7 +181,7 @@ function Player(option) {
         }
     };
     this.attack = function(enemy) {
-        console.log(enemyMaxHp);
+        
         var playerHit = Math.floor(Math.random() * 100);
         var enemyHit = Math.floor(Math.random() * 10);
 

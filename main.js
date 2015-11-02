@@ -69,7 +69,6 @@ var game = {
         $('#weaponList').on('click','a', function(event){
           event.preventDefault();
           var weaponequip = $(this).parent('li').attr('rel');
-          console.log(weaponequip);
           switch (weaponequip) {
             case 'fist': player.equip(fist);
               break;
