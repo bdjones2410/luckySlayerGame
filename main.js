@@ -43,6 +43,8 @@ var game = {
           }
           else {
             player.health = 100*player.level;
+            log = "Welcome to Camp, rest your wounds and gamble for a chance at stronger weaponry for battle!";
+            game.newText($('.contentText'), log);
             $('#upperRight').addClass('nothere');
             $('.campRight').removeClass('nothere');
             $('.topRight').css('background-image','url(images/camp.png-original)');

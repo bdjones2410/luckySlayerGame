@@ -24,7 +24,7 @@ var templates ={
 
     consoleText: [
       '<span class="contentText">',
-      'Welcome to Camp, rest your wounds and gamble for a chance at stronger weaponry for battle!',
+      'Welcome to lucky slayer <%=name%>, a race to become strong enough to take on The Destroyer before he gets mad enough to come for you!',
       '</span>',
     ].join(""),
 
