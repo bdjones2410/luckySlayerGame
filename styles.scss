@@ -36,6 +36,10 @@ header{
     height:200px;
   }
 }
+
+.nothere{
+  display:none;
+}
 /************************************
 TOP LEFT
 ************************************/
@@ -76,6 +80,23 @@ height:500px;
 #upperRight{
   height:92%;
 
+}
+
+.campRight{
+  height:92%;
+  .campText{
+    background-color:white;
+    border-radius: 5px;
+    padding:0 5px;
+  }
+}
+
+.gamblers{
+  background-color:white;
+  border-radius:5px;
+  padding:5px;
+  text-align: center;
+  margin-top:15%;
 }
 .dragonBackground {
   background-size: contain;
@@ -124,11 +145,25 @@ height:500px;
   border-left:$goldBorder;
   float:right;
 }
+.interactButs{
+text-align:center;
+margin-top:5%;
+}
+.atkBut{
+  width:60%;
+  margin:10px auto;
+
+
+}
+.runBut{
+  width:60%;
+  margin:10px auto;
+}
 /************************************
 BOTTOM LEFT
 ************************************/
 div.stats{
-  height:20%;
+  height:17%;
   font-size: 1.5em;
 }
 

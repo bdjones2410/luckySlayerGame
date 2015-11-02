@@ -1,16 +1,13 @@
 var fist = new Weapon({name:"fist", damage:1, pic:"images/fist.png"});
-var playerName = "Brandon";
 
- // prompt("What is your name adventurer?");
+var playerName = prompt("What is your name?");
 
 var player = new Player({name: playerName});
 
 var log = "";
 
+var enemyMaxHp = "";
 
-//  var newText = function($el, log){
-//   $el.html(log);
-// }
 
 var gambleCost = 15;
 
@@ -28,7 +25,7 @@ function Player(option) {
     this.level = 1;
     this.experience = 0;
     this.expNeeded = 100;
-    this.gold = 0;
+    this.gold = 40;
     this.gamble = function() {
         if (this.gold >= gambleCost) {
             this.gold = this.gold - gambleCost;
@@ -41,7 +38,6 @@ function Player(option) {
                         log = "Woo! your " + magicSword.name +
                             " has gained more power! and is currently stronger than your " +
                             this.weapon.name + " so you equip it! ";
-
                             this.equip(magicSword);
                     } else {
                         log =
@@ -79,6 +75,9 @@ function Player(option) {
                     legendarySword.name = "SUPER legendary Sword";
                     log = "UBER LUCKY!!! your " + legendarySword.name +
                         " gains even more power!";
+                        if(legendarySword.damage >= this.weapon.damage){
+                          this.equip(legendarySword);
+                        }
 
                 } else {
                   legendarySword = new Weapon({
@@ -86,13 +85,17 @@ function Player(option) {
                      damage: 100,
                      pic: "images/GiantGlowingSword.png",
                   });
+                    if (legendarySword.damage > this.weapon.damage){
                     this.equip(legendarySword);
                     weaponArr.push(legendarySword);
                     log = "Super Lucky!  YOU GOT " +
                         legendarySword.name +
                         " if you continue to gamble, maybe you can even turn it into a SUPER legendary?";
-
                 }
+                  else{
+                    log = "Super Lucky... ish!  YOU GOT "+legendarySword.name + "but your current weapon is stronger. Try powering it up with more gambling!";
+                  }
+              }
             } else if (roll > 65 && roll < 85) {
                 if (coolKnife != 1) {
                     log = "you already have a " + coolKnife.name +
@@ -131,16 +134,16 @@ function Player(option) {
                      pic: "images/bigstick.png",
                   });
                     weaponArr.push(pokeyStick);
-                    if (this.weapon.damage >= pokeyStick) {
+                    if (this.weapon.damage >= pokeyStick.damage) {
                         log = "You may have found a new " +
                             pokeyStick.name +
                             " but your current weapon is better, so it goes in storage!";
 
-                    } else {
+                    }
+                    else {
                         this.equip(pokeyStick);
                         log = "You find a nice " + pokeyStick.name +
                             " which is better than your fists! so let's use it!";
-
                     }
                 }
             } else {
@@ -153,12 +156,15 @@ function Player(option) {
             log = "not enough gold to gamble! slay more and return!";
 
         }
+          game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
           game.weaponLoad($('#weaponList'), weaponArr, 'weaponSlot');
           game.newText($('.contentText'), log);
     };
     this.weapon = fist;
     this.equip = function(weapon) {
         this.weapon = weapon;
+        this.damageDealt = this.weapon.damage + this.bonusAtk;
+        game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
     };
     this.bonusAtk = 2;
     this.damageDealt = this.weapon.damage + this.bonusAtk;
@@ -175,11 +181,11 @@ function Player(option) {
         }
     };
     this.attack = function(enemy) {
-
+        console.log(enemyMaxHp);
         var playerHit = Math.floor(Math.random() * 100);
         var enemyHit = Math.floor(Math.random() * 10);
 
-        if (playerHit > 20 && playerHit < 95) {
+        if (playerHit > 20 && playerHit < 91) {
             enemy.health = enemy.health - (this.weapon.damage + this.bonusAtk);
             if (enemy.health > 0) {
                 if (enemyHit > 2) {
@@ -209,11 +215,12 @@ function Player(option) {
 
                 }
             } else {
+                enemy.health = enemyMaxHp;
                 this.experience = this.experience + enemy.expWorth;
                 this.gold = this.gold + enemy.goldWorth;
                 if (this.experience > this.expNeeded) {
                     this.onLvl();
-                    log =  "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
+                    log =  "you have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
                         this.level + " health: " + this.health +
                         " experience left to next level: " + (this.expNeeded -
                             this.experience) + " Gold earned: " +
@@ -238,9 +245,9 @@ function Player(option) {
                 }
             }
 
-        } else if (playerHit > 95) {
-            enemy.health = enemy.health - ((this.weapon.damage + this.bonusAttack) *
-                2);
+        } else if (playerHit > 90) {
+            var critHit = (this.weapon.damage + this.bonusAttack)*2;
+            enemy.health = enemy.health - critHit;
 
             if (enemy.health > 0) {
                 if (enemyHit > 2) {
@@ -254,7 +261,7 @@ function Player(option) {
                             enemy.health;
 
                     } else {
-                        log = "You took some flesh from the " +
+                        log = "You took some critical flesh from the " +
                             enemy
                             .name +
                             ", but he took your life! Game Over";
@@ -270,28 +277,27 @@ function Player(option) {
 
                 }
             } else {
+                enemy.health = enemyMaxHp;
                 this.experience = this.experience + enemy.expWorth;
                 this.gold = this.gold + enemy.goldWorth;
                 if (this.experience >= this.expNeeded) {
                     this.onLvl();
                     log =
-                        "You have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
+                        "You critically strike! and have destroyed the enemy and in a burst of light you feel stronger!  you are now level: " +
                         this.level + " health: " + this.health +
                         " experience left to next level: " + (this.expNeeded -
                             this.experience) + " Gold earned: " +
                         enemy.goldWorth;
 
                 } else {
-                    log = "You have destroyed the " + enemy.name +
+                    log = "You critically strike and have destroyed the " + enemy.name +
                         "! and gained: " + enemy.expWorth +
                         " experience points! congrats! your remaining health is: " +
                         this.health + " Gold earned: " + enemy.goldWorth
                     ;
 
                     game.loadNewen();
-                    console.log(
-                        "But a new enemy has appearedy! you now are fighting a " +
-                        curEnemy.name);
+
                 }
             }
         } else {
@@ -360,34 +366,34 @@ var curEnemy = '';
 //field monsters//
 var bug = new Enemy({
     name: "Bug",
-    health: 50,
-    attack: 10,
-    expWorth: 20,
+    health: 10,
+    attack: 2,
+    expWorth: 10,
     goldWorth: 5,
     pic: "images/evilbug-vi.gif",
 });
 var bat = new Enemy({
     name: "Bat",
-    health: 50,
-    attack: 10,
-    expWorth: 20,
-    goldWorth: 5,
+    health: 15,
+    attack: 5,
+    expWorth: 15,
+    goldWorth: 10,
     pic: "images/evilbat.gif",
 });
 var snake = new Enemy({
     name: "Snake",
-    health: 50,
+    health: 20,
     attack: 10,
     expWorth: 20,
-    goldWorth: 5,
+    goldWorth: 15,
     pic: "images/snake.gif",
 });
 var critter = new Enemy({
     name: "Critter",
     health: 50,
-    attack: 10,
+    attack: 1,
     expWorth: 20,
-    goldWorth: 5,
+    goldWorth: 10,
     pic: "images/critter.gif",
 });
 
@@ -397,66 +403,66 @@ var critter = new Enemy({
 var sprite = new Enemy({
     name: "Sprite",
     health: 50,
-    attack: 50,
+    attack: 10,
     expWorth: 30,
-    goldWorth: 10,
+    goldWorth: 20,
     pic: "images/sprite.gif",
 });
 var darkWolf = new Enemy({
     name: "Dark Wolf",
     health: 50,
-    attack: 50,
-    expWorth: 30,
-    goldWorth: 10,
+    attack: 20,
+    expWorth: 35,
+    goldWorth: 25,
     pic: "images/darkWolf.png",
 });
 var goblin = new Enemy({
     name: "Goblin",
     health: 50,
-    attack: 50,
-    expWorth: 30,
-    goldWorth: 10,
+    attack: 15,
+    expWorth: 35,
+    goldWorth: 20,
     pic: "images/goblin.png",
 });
 var satire = new Enemy({
     name: "Satire",
-    health: 50,
-    attack: 50,
-    expWorth: 30,
-    goldWorth: 10,
+    health: 20,
+    attack: 30,
+    expWorth: 40,
+    goldWorth: 25,
     pic: "images/satire.jpg",
 });
 
 //mountain monsters//
 var ogre = new Enemy({
     name: "Ogre",
-    health: 500,
-    attack: 150,
-    expWorth: 200,
+    health: 80,
+    attack: 45,
+    expWorth: 100,
     goldWorth: 20,
     pic: "images/ogre.gif",
 });
 var minotaur = new Enemy({
     name: "Minotaur",
-    health: 500,
-    attack: 150,
-    expWorth: 200,
+    health: 90,
+    attack: 55,
+    expWorth: 140,
     goldWorth: 20,
-    pic: "images/minotaur.gif",
+    pic: "images/minotaur2.png",
 });
 var troll = new Enemy({
     name: "Troll",
-    health: 500,
-    attack: 150,
-    expWorth: 200,
-    goldWorth: 20,
+    health: 800,
+    attack: 10,
+    expWorth: 10,
+    goldWorth: 200,
     pic: "images/troll.gif",
 });
 var harpy = new Enemy({
     name: "Harpy",
-    health: 500,
-    attack: 150,
-    expWorth: 200,
+    health: 40,
+    attack: 60,
+    expWorth: 210,
     goldWorth: 20,
     pic: "images/Harpy.gif",
 });
@@ -472,16 +478,16 @@ var totoro = new Enemy({
 });
 var fairyorb = new Enemy({
     name: "fairy",
-    health: 5,
-    attck: 1,
+    health: 1,
+    attack: 0,
     expWorth: 500,
-    goldWorth: 100,
+    goldWorth: 0,
     pic: "images/fairyorb.png",
 });
 var phoenix = new Enemy({
     name: "Phoenix",
     health: 100,
-    attck: 50,
+    attack: 50,
     expWorth: 800,
     goldWorth: 200,
     pic: "images/phoenix.gif",
@@ -507,7 +513,7 @@ var mountainArr = [
     ogre, minotaur, troll, harpy
 ];
 var raresArr = [
-    fairyorb, phoenix,
+    fairyorb, phoenix, totoro,
 ];
 var bossArr = [
     dragon,
@@ -520,33 +526,34 @@ var bossRage = 0;
 
 function newEnemy(zone) {
     var rareChance = Math.floor(Math.random() * 100);
-    if (rareChance > 85 && rareChance < 95) {
+    if (rareChance > 85 && rareChance < 95 && bossRage <= 4) {
         var rareEn = Math.floor(Math.random() * raresArr.length);
         curEnemy = raresArr[rareEn];
-        console.log("lucky day! rare monster has shown up! " + curEnemy.name);
-    } else if (rareChance > 95) {
+        log= "lucky day! rare monster has shown up! " + curEnemy.name;
+        game.newText($('.contentText'), log);
+    } else if (rareChance > 95 || bossRage >4) {
         bossRage++;
         if (bossRage > 3) {
-            bossRage = 0;
             curEnemy = bossArr[0];
-            console.log("The " + curEnemy.name +
-                " has had enough taunting!  He has come to Destroy!");
+            log ="The " + curEnemy.name +
+                " has had enough taunting!  He has come to Destroy!";
+                game.newText($('.contentText'), log);
         } else {
-            console.log("You can hear a roar off in the distance, the " +
+            log = "You can hear a roar off in the distance, the " +
                 bossArr[0].name +
-                " has noticed you and is getting agitated by your actions, be careful, who knows how long before he has enough and attacks!"
-            );
-            newEnemy(zone);
+                " has noticed you and is getting agitated by your actions, be careful, who knows how long before he has enough and attacks!";
+                game.newText($('.contentText'), log);
+                game.loadNewen();
         }
-    } else {
+    }
+    else {
         var idx = Math.floor(Math.random() * zone.length);
         curEnemy = zone[idx];
     }
-    // game.loadTemplate($('.enemyWindow'), curEnemy, 'enemyDisplay');
+    enemyMaxHp = curEnemy.health;
 }
 
 newEnemy(zone);
 
-// v--- Where I put the made weapons into an array.
 
 var weaponArr = [fist];

@@ -4,6 +4,8 @@ var templates ={
       '<div class="col-md-6 stats"><%= name %></div>',
       '<div class="col-md-6 stats">Health:</div>',
       '<div class="col-md-6 stats"><%= health %></div>',
+      '<div class="col-md-6 stats">Level:</div>',
+      '<div class="col-md-6 stats"><%= level %></div>',
       '<div class="col-md-6 stats">Damage:</div>',
       '<div class="col-md-6 stats"><%= damageDealt %></div>',
       '<div class="col-md-6 stats">Gold:</div>',
@@ -13,7 +15,7 @@ var templates ={
     ].join(""),
 
     weaponSlot:[
-      '<li class="weapon border">',
+      '<li class="weapon border" rel="<%=name%>">',
       '<a href="#" class="eachWep">',
       '<img src=" <%= pic %> " class= "center-block img-responsive" alt="">',
       '</a>',
@@ -22,8 +24,7 @@ var templates ={
 
     consoleText: [
       '<span class="contentText">',
-      'Welcome <%=name%> to a land of luck and battle!  Can you get strong enough ',
-      'on the corpses of enemies, to battle the Destroyer before he gets too irriated and comes for you?',
+      'Welcome to Camp, rest your wounds and gamble for a chance at stronger weaponry for battle!',
       '</span>',
     ].join(""),
 

@@ -7,7 +7,6 @@ var game = {
   init: function() {
       game.styling();
       game.events();
-
   },
 
   styling: function(){
@@ -23,8 +22,12 @@ var game = {
   events: function() {
       $('.navBut').on('click','.btn', function(event){
         event.preventDefault();
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
         var curse = $(this).attr('rel');
         if(curse != "camp"){
+          $('.campRight').addClass('nothere');
+          $('#upperRight').removeClass('nothere');
           if(curse === "fieldArr"){
             zone = fieldArr;
             $('.topRight').css('background-image','url(images/mtn.jpg)');
@@ -40,12 +43,53 @@ var game = {
           }
           else {
             player.health = 100*player.level;
+            $('#upperRight').addClass('nothere');
+            $('.campRight').removeClass('nothere');
             $('.topRight').css('background-image','url(images/camp.png-original)');
             game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
           }
 
         });
+
+        $('.interactButs').on('click','.btn',function(event){
+          event.preventDefault();
+          if($(this).attr('rel') === "attack"){
+          player.attack(curEnemy);
+        }
+        else if ($(this).attr('rel') === "run"){
+          game.loadNewen();
+        }
+      });
+
+        $('.gamblers').on('click','.btn', function(event){
+          event.preventDefault();
+          player.gamble();
+        });
+
+        $('#weaponList').on('click','a', function(event){
+          event.preventDefault();
+          var weaponequip = $(this).parent('li').attr('rel');
+          console.log(weaponequip);
+          switch (weaponequip) {
+            case 'fist': player.equip(fist);
+              break;
+            case 'almost Legendary Sword': player.equip(magicSword);
+              break;
+            case 'Legendary Sword': player.equip(legendarySword);
+              break;
+            case 'nifty Knife': player.equip(coolKnife);
+              break;
+            case 'Poking Stick': player.equip(pokeyStick);
+              break;
+            default:
+
+          }
+          game.loadTemplate($('.bottomLeft'), player, 'playerProfile');
+
+        });
+
       },
+
 
 
 
@@ -75,7 +119,7 @@ var game = {
   },
 
   loadNewen: function(){
-      newEnemy(zone)
+      newEnemy(zone);
       game.loadTemplate($('.enemyWindow'), curEnemy, 'enemyDisplay');
 },
 };
